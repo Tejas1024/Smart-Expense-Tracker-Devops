@@ -1,6 +1,6 @@
 # Multi-stage build for optimization
 # Stage 1: Build stage
-FROM python:3.11-slim as builder
+FROM python:3.11-slim AS builder
 
 # Why? Smaller final image, faster builds
 WORKDIR /app
