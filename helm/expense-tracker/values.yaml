@@ -5,8 +5,8 @@ namespace: expense-tracker
 
 # Replica counts for each component
 replicaCount:
-  backend: 2
-  frontend: 2
+  backend: 3
+  frontend: 3
   postgres: 1
 
 image:
