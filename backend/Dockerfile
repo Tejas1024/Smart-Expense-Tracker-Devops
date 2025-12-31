@@ -32,5 +32,5 @@ USER appuser
 # Expose Django port
 EXPOSE 8000
 
-# 🚀 Start Gunicorn properly (CRITICAL FIX)
+# 🚀 Start Gunicorn properly (CRITICAL  FIX)
 CMD ["gunicorn", "expense_tracker.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "2", "--timeout", "120"]
