@@ -7,7 +7,7 @@ from django.db.models import Sum, Count, Avg, Q
 from django.utils import timezone
 from datetime import datetime, timedelta
 import calendar
-import logging 
+import logging  
 
 from .models import Category, Expense, Budget
 from .serializers import (
