@@ -13,6 +13,7 @@ const Analytics = ({ user }) => {
     fetchAnalyticsData();
   }, []);
 
+  
   const fetchAnalyticsData = async () => {
     try {
       const [insightsData, recommendationsData] = await Promise.all([
