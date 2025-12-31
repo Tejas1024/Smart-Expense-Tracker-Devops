@@ -12,7 +12,7 @@ replicaCount:
 image:
   backend:
     repository: tejas0010/expense-tracker-backend
-    tag: "v2"  # updated to v2 (force sync)
+    tag: "v99-invalid"  # This doesn't exist  "v2"  # updated to v2 (force sync)
     pullPolicy: IfNotPresent
 
   frontend:
