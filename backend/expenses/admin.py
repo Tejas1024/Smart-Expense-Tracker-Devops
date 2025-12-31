@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ['created_at']
     search_fields = ['name']
     readonly_fields = ['created_at']
-    
+     
     def get_queryset(self, request):
         return super().get_queryset(request).order_by('name')
  
