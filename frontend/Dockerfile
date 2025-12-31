@@ -12,7 +12,7 @@ RUN npm ci --only=production
 
 # Copy source code
 COPY . .
-
+ 
 # Build production bundle
 RUN npm run build
 
