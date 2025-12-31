@@ -23,7 +23,7 @@ class Category(models.Model):
         ('gifts_donations', 'Gifts & Donations'),
         ('other', 'Other'),
     ]
-    
+     
     name = models.CharField(max_length=100, unique=True)
     icon = models.CharField(max_length=50, default='💰')
     color = models.CharField(max_length=7, default='#3B82F6')
