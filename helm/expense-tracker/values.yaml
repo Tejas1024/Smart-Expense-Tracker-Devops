@@ -3,6 +3,7 @@ global:
 
 namespace: expense-tracker
 
+# Replica counts for each component
 replicaCount:
   backend: 2
   frontend: 2
@@ -123,15 +124,14 @@ resources:
       cpu: 500m
       memory: 512Mi
 
-# Autoscaling configuration (optional)
+# Autoscaling configuration (disabled by default)
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
 
-# Additional generic deployment settings
-replicaCount: 1
+# Generic deployment settings (for compatibility with _helpers.tpl)
 imagePullSecrets: []
 podAnnotations: {}
 podLabels: {}
@@ -140,19 +140,10 @@ securityContext: {}
 nodeSelector: {}
 tolerations: []
 affinity: {}
-
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
-
 volumeMounts: []
 volumes: []
 
+# Service account settings
 serviceAccount:
   create: true
   automount: true
