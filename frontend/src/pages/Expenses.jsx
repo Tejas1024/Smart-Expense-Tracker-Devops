@@ -7,7 +7,7 @@ import { expenseService } from '../services/api';
 import { formatDate } from '../utils/helpers';
 import toast from 'react-hot-toast';
 import '../styles/Expenses.css';
-
+ 
 const Expenses = ({ user }) => {
   const [expenses, setExpenses] = useState([]);
   const [categories, setCategories] = useState([]);
