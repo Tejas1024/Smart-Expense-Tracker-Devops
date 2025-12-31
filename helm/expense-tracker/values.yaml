@@ -40,6 +40,24 @@ service:
     port: 5432
     targetPort: 5432
 
+# Ingress configuration
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: expense-tracker.local
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: frontend-service
+              port:
+                number: 80
+  tls: []
+
 database:
   host: postgres-service
   name: expense_tracker
@@ -80,3 +98,27 @@ healthCheck:
       path: /
       initialDelaySeconds: 5
       periodSeconds: 5
+
+# Resource limits (optional but recommended)
+resources:
+  backend:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  frontend:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  postgres:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
