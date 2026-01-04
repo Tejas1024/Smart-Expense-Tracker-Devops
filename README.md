@@ -85,6 +85,8 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 
 ## 📊 Project Phases
 
+> **📸 Note:** All screenshots are organized in `documentation/phase-X/screenshots/` folders. See each phase folder for detailed visual documentation.
+
 ### Phase 1: Environment Setup & Verification
 
 **Objective:** Establish development environment with all required tools.
@@ -109,8 +111,8 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Tool verification saves debugging time later in the pipeline
 
 **Screenshots:**
-- `documentation/phase-1/screenshots/phase1_core_tools_verified.png`
-- `documentation/phase-1/screenshots/phase1_git_push_success.png`
+- `documentation/phase-1/screenshots/` (Core tools verification screenshots)
+- `documentation/phase-1/screenshots/` (Git push success screenshots)
 
 ---
 
@@ -218,10 +220,7 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Path filtering prevents unnecessary builds
 
 **Screenshots:**
-- `documentation/phase-5/screenshots/phase5_workflows_directory_created.png`
-- `documentation/phase-5/screenshots/phase5_github_actions_triggered.png`
-- `documentation/phase-5/screenshots/phase5_github_actions_success.png`
-- `documentation/phase-5/screenshots/phase5_dockerhub_images_with_sha.png`
+- `documentation/phase-5/screenshots/` (All Phase 5 CI/CD screenshots)
 
 ---
 
@@ -264,10 +263,7 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Cost management requires stopping services when not in use
 
 **Screenshots:**
-- `documentation/phase-5/screenshots/phase5_ecs_cluster_created.png`
-- `documentation/phase-5/screenshots/phase5_task_definitions.png`
-- `documentation/phase-5/screenshots/phase5_services_running.png`
-- `documentation/phase-5/screenshots/phase5_cloudwatch_logs.png`
+- See `documentation/phase-10/screenshots/` for complete deployment screenshots
 
 ---
 
@@ -603,6 +599,87 @@ aws ecs describe-services \
 - ✅ Documentation and README creation
 - ✅ Security best practices (secrets management)
 - ✅ Monitoring and observability
+
+---
+
+## 📸 Screenshots & Documentation
+
+All project phases are fully documented with screenshots organized in the following structure:
+
+```
+documentation/
+├── phase-1/          # Environment Setup & Verification
+│   └── screenshots/
+├── phase-2/          # Docker Multi-Stage Builds
+│   └── screenshots/
+│       ├── phase2_backend_build_success.png
+│       ├── phase2_frontend_build_success.png
+│       ├── phase2_dockerhub_login.png
+│       └── phase2_dockerhub_push_success.png
+├── phase-4/          # Helm Chart Creation
+│   └── screenshots/
+├── phase-5/          # GitHub Actions CI Pipeline
+│   └── screenshots/
+├── phase-6/          # Argo CD GitOps Setup
+│   └── screenshots/
+└── phase-10/         # Complete CI/CD Testing & Production
+    ├── CI-CD-FLOW.md
+    └── screenshots/  (33+ comprehensive milestone screenshots)
+```
+
+### Key Screenshot Categories:
+
+**Phase 1 - Environment Setup:**
+- Core development tools verification
+- Git configuration and connectivity
+- Docker daemon status
+- Python and Node.js validation
+
+**Phase 2 - Dockerization:**
+- Backend multi-stage build process
+- Frontend NGINX build success
+- Docker Hub authentication
+- Image push confirmations
+
+**Phase 4 - Helm Charts:**
+- Helm chart structure
+- Template validation
+- Values configuration
+- Chart deployment
+
+**Phase 5 - CI Pipeline:**
+- GitHub Actions workflow setup
+- Automated build triggers
+- Docker image tagging with SHA
+- DockerHub registry updates
+
+**Phase 6 - GitOps:**
+- Argo CD installation
+- Application sync status
+- Self-healing demonstrations
+- GitOps workflow validation
+
+**Phase 10 - Production Deployment:**
+- Complete CI/CD flow testing
+- Scaling operations (4→6 backend, 4→5 frontend replicas)
+- Self-healing pod recovery
+- Rollback testing with failed deployments
+- Application accessibility verification
+- Resource status monitoring
+- Deployment history tracking
+
+### Viewing Screenshots:
+
+Navigate to the respective phase folder to view detailed visual documentation:
+```bash
+# Example: View Phase 2 screenshots
+cd documentation/phase-2/screenshots/
+ls -la
+
+# Example: View Phase 10 comprehensive documentation
+cd documentation/phase-10/
+cat CI-CD-FLOW.md
+```
 
 ---
 
