@@ -7,6 +7,8 @@
 
 ## 📋 Project Overview
 
+> **📸 This README includes 50+ embedded screenshots documenting every phase of the DevOps implementation journey from environment setup to production deployment.**
+
 A production-grade **Smart Expense Tracker** application with AI-powered insights, built with Django and React, deployed using modern DevOps practices. This project demonstrates end-to-end containerization, CI/CD pipeline implementation, Kubernetes orchestration, and GitOps deployment methodology.
 
 **Problem Statement:** Manual expense tracking is time-consuming and lacks intelligent insights. This solution provides automated categorization, AI-powered financial analysis, and seamless cloud deployment.
@@ -111,8 +113,12 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Tool verification saves debugging time later in the pipeline
 
 **Screenshots:**
-- `documentation/phase-1/screenshots/` (Core tools verification screenshots)
-- `documentation/phase-1/screenshots/` (Git push success screenshots)
+
+![Core Tools Verified](documentation/phase-1/screenshots/phase1_core_tools_verified.png)
+*All essential development tools verified and ready*
+
+![Git Push Success](documentation/phase-1/screenshots/phase1_git_push_success.png)
+*Successfully pushed code to GitHub repository*
 
 ---
 
@@ -149,10 +155,18 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Proper NGINX configuration ensures SPA routing works correctly
 
 **Screenshots:**
-- `documentation/phase-2/screenshots/phase2_backend_build_success.png`
-- `documentation/phase-2/screenshots/phase2_frontend_build_success.png`
-- `documentation/phase-2/screenshots/phase2_dockerhub_login.png`
-- `documentation/phase-2/screenshots/phase2_dockerhub_push_success.png`
+
+![Backend Build Success](documentation/phase-2/screenshots/phase2_backend_build_success.png)
+*Django backend Docker image built successfully with multi-stage optimization*
+
+![Frontend Build Success](documentation/phase-2/screenshots/phase2_frontend_build_success.png)
+*React frontend with NGINX built and optimized for production*
+
+![Docker Hub Login](documentation/phase-2/screenshots/phase2_dockerhub_login.png)
+*Authenticated with Docker Hub for image registry access*
+
+![Docker Hub Push Success](documentation/phase-2/screenshots/phase2_dockerhub_push_success.png)
+*Both backend and frontend images successfully pushed to Docker Hub*
 
 ---
 
@@ -176,6 +190,14 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Proper `.gitignore` prevents sensitive data leaks
 - Structured repository layout improves maintainability
 - Version control is the foundation for GitOps practices
+
+**Screenshots:**
+
+![Repository Structure](documentation/phase-3/screenshots/phase3_repository_structure.png)
+*Well-organized project structure with Kubernetes manifests*
+
+![Git Configuration](documentation/phase-3/screenshots/phase3_git_config.png)
+*Git repository initialized with proper branching strategy*
 
 ---
 
@@ -220,7 +242,42 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Path filtering prevents unnecessary builds
 
 **Screenshots:**
-- `documentation/phase-5/screenshots/` (All Phase 5 CI/CD screenshots)
+
+![Workflows Directory Created](documentation/phase-5/screenshots/phase5_workflows_directory_created.png)
+*GitHub Actions workflow files created and organized*
+
+![Backend CI Workflow](documentation/phase-5/screenshots/phase5_backend_ci_file_created.png)
+*Backend CI workflow with automated testing and Docker build*
+
+![Frontend CI Workflow](documentation/phase-5/screenshots/phase5_frontend_ci_file_created.png)
+*Frontend CI workflow with npm build and Docker push*
+
+![Docker Hub Token](documentation/phase-5/screenshots/phase5_dockerhub_token_created.png)
+*Docker Hub access token generated for CI authentication*
+
+![GitHub Secrets Added](documentation/phase-5/screenshots/phase5_github_secrets_complete.png)
+*DOCKERHUB_USERNAME and DOCKERHUB_TOKEN configured in GitHub*
+
+![Workflows Committed](documentation/phase-5/screenshots/phase5_workflows_committed.png)
+*CI workflow files committed to repository*
+
+![Git Push Complete](documentation/phase-5/screenshots/phase5_git_push_complete.png)
+*Changes pushed to GitHub, triggering CI pipeline*
+
+![GitHub Actions Triggered](documentation/phase-5/screenshots/phase5_github_actions_triggered.png)
+*CI pipeline automatically triggered on push*
+
+![GitHub Actions Success](documentation/phase-5/screenshots/phase5_github_actions_success.png)
+*Both backend and frontend CI workflows completed successfully*
+
+![Docker Hub Images with SHA](documentation/phase-5/screenshots/phase5_dockerhub_images_with_sha.png)
+*Images pushed to Docker Hub with both 'latest' and commit SHA tags*
+
+![Test Commit](documentation/phase-5/screenshots/phase5_test_commit_pushed.png)
+*Test commit to verify CI pipeline automation*
+
+![CI Rerun Success](documentation/phase-5/screenshots/phase5_ci_rerun_success.png)
+*Second CI run successful, confirming pipeline reliability*
 
 ---
 
@@ -263,7 +320,212 @@ A production-grade **Smart Expense Tracker** application with AI-powered insight
 - Cost management requires stopping services when not in use
 
 **Screenshots:**
-- See `documentation/phase-10/screenshots/` for complete deployment screenshots
+
+![Helm Chart Structure](documentation/phase-4/screenshots/phase4_helm_chart_created.png)
+*Helm chart structure with templates and values files*
+
+![Helm Lint Success](documentation/phase-4/screenshots/phase4_helm_lint_success.png)
+*Helm chart validated without errors*
+
+![Helm Template Render](documentation/phase-4/screenshots/phase4_helm_template_render.png)
+*Kubernetes manifests generated from Helm templates*
+
+![Helm Install Success](documentation/phase-4/screenshots/phase4_helm_install_success.png)
+*Application successfully deployed using Helm*
+
+![Pods Running](documentation/phase-4/screenshots/phase4_pods_running.png)
+*All backend, frontend, and database pods healthy*
+
+![Services Active](documentation/phase-4/screenshots/phase4_services_active.png)
+*Kubernetes services created and accessible*
+
+---
+
+### Phase 6: Argo CD GitOps Setup
+
+**Objective:** Implement GitOps continuous deployment using Argo CD.
+
+**What Was Implemented:**
+- Installed Argo CD on Kubernetes cluster
+- Configured application sync from Git repository
+- Set up automated deployment with self-healing
+- Implemented rollback capabilities
+- Connected Helm charts with Argo CD
+
+**Tools Used:**
+- Argo CD
+- Kubernetes
+- Helm
+- Git
+
+**Key Learnings:**
+- GitOps provides declarative infrastructure management
+- Self-healing automatically corrects configuration drift
+- Git becomes single source of truth for deployments
+- Argo CD provides excellent visualization of app health
+
+**Screenshots:**
+
+![Argo CD Installation](documentation/phase-6/screenshots/phase6_argocd_installed.png)
+*Argo CD successfully installed in argocd namespace*
+
+![Argo CD UI Access](documentation/phase-6/screenshots/phase6_argocd_ui_access.png)
+*Argo CD web interface accessible*
+
+![Application Created](documentation/phase-6/screenshots/phase6_application_created.png)
+*Expense tracker application configured in Argo CD*
+
+![Sync in Progress](documentation/phase-6/screenshots/phase6_sync_in_progress.png)
+*Argo CD syncing application state with Git repository*
+
+![Application Healthy](documentation/phase-6/screenshots/phase6_application_healthy.png)
+*All resources deployed and healthy*
+
+![Self Healing Demo](documentation/phase-6/screenshots/phase6_self_healing_demo.png)
+*Self-healing automatically restores deleted resources*
+
+![GitOps Workflow](documentation/phase-6/screenshots/phase6_gitops_workflow.png)
+*Complete GitOps deployment workflow visualization*
+
+---
+
+### Phase 10: Complete CI/CD Pipeline Testing & Final Production Deployment
+
+**Objective:** Test end-to-end CI/CD pipeline with real deployments, scaling, self-healing, and rollback capabilities.
+
+**What Was Implemented:**
+
+#### Complete Pipeline Testing
+- End-to-end CI/CD flow from code commit to production
+- Scaling operations (Backend: 4→6 replicas, Frontend: 4→5 replicas)
+- Self-healing pod recovery verification
+- Rollback testing with intentionally failed deployments
+- Application accessibility and health validation
+- Complete deployment history tracking
+
+#### Performance Metrics Achieved
+- **Build Time**: 3-5 minutes
+- **Sync Detection**: 1-3 minutes  
+- **Deployment Time**: 2-4 minutes
+- **Total (Code to Production)**: 8-15 minutes
+- **Downtime**: 0 seconds (rolling updates)
+- **Self-Healing Recovery**: 30-45 seconds
+- **Rollback Time**: 2-3 minutes
+
+**Tools Used:**
+- GitHub Actions (CI)
+- Argo CD (CD)
+- Kubernetes
+- Docker Hub
+- Helm
+
+**Key Learnings:**
+- Zero-downtime deployments with rolling updates
+- Automated recovery prevents manual intervention
+- Fast rollbacks resolve issues within minutes
+- GitOps provides complete audit trail
+- Scaling is seamless with proper orchestration
+
+**Screenshots:**
+
+![Prerequisites Check](documentation/phase-10/screenshots/phase10_prerequisites_check.png)
+*Initial state verification before testing*
+
+![Docker Push v2](documentation/phase-10/screenshots/phase10_docker_push_v2.png)
+*Backend v2 image built and pushed to Docker Hub*
+
+![Helm Values Updated](documentation/phase-10/screenshots/phase10_values_updated.png)
+*Helm values.yaml updated with new image tag*
+
+![Git Push v2](documentation/phase-10/screenshots/phase10_git_push_v2.png)
+*Changes committed and pushed, triggering CI/CD*
+
+![Argo CD Sync Detected](documentation/phase-10/screenshots/phase10_argocd_sync_detected.png)
+*Argo CD detected Git repository changes*
+
+![Argo CD Syncing](documentation/phase-10/screenshots/phase10_argocd_syncing.png)
+*Synchronization in progress*
+
+![Backend v2 Deployed](documentation/phase-10/screenshots/phase10_backend_v2_deployed.png)
+*Backend successfully updated to v2*
+
+![Argo CD Synced](documentation/phase-10/screenshots/phase10_argocd_synced.png)
+*Application fully synced and healthy*
+
+![Scaling Configuration](documentation/phase-10/screenshots/phase10_scaling_push.png)
+*Scaling configuration pushed to Git*
+
+![Scaled Replicas](documentation/phase-10/screenshots/phase10_scaled_replicas.png)
+*6 backend pods and 5 frontend pods running*
+
+![Deployment Status](documentation/phase-10/screenshots/phase10_deployment_status.png)
+*All deployments at desired state*
+
+![Self Healing Test](documentation/phase-10/screenshots/phase10_self_healing.png)
+*Pod automatically recreated after manual deletion*
+
+![Argo CD Self Healed](documentation/phase-10/screenshots/phase10_argocd_self_healed.png)
+*Argo CD maintained application health*
+
+![Bad Deployment Push](documentation/phase-10/screenshots/phase10_bad_deployment_push.png)
+*Invalid image tag (v99) pushed for rollback testing*
+
+![Deployment Failed](documentation/phase-10/screenshots/phase10_deployment_failed.png)
+*Pods in ImagePullBackOff state as expected*
+
+![Argo CD Degraded](documentation/phase-10/screenshots/phase10_argocd_degraded.png)
+*Application showing degraded state*
+
+![Rollback Push](documentation/phase-10/screenshots/phase10_rollback_push.png)
+*Rollback to v2 committed to Git*
+
+![Rollback Success](documentation/phase-10/screenshots/phase10_rollback_success.png)
+*All pods recovered successfully*
+
+![Argo CD Recovered](documentation/phase-10/screenshots/phase10_argocd_recovered.png)
+*Application healthy after rollback*
+
+![Deployment History](documentation/phase-10/screenshots/phase10_deployment_history.png)
+*Complete deployment history visible in Argo CD*
+
+![Rollout History](documentation/phase-10/screenshots/phase10_rollout_history.png)
+*Kubernetes rollout revisions tracked*
+
+![Services Final](documentation/phase-10/screenshots/phase10_services_final.png)
+*All services operational*
+
+![Application Running](documentation/phase-10/screenshots/phase10_application_running.png)
+*Frontend accessible and functioning*
+
+![Backend Health](documentation/phase-10/screenshots/phase10_backend_health.png)
+*Backend health check passing*
+
+![All Resources](documentation/phase-10/screenshots/phase10_all_resources.png)
+*Complete resource overview*
+
+![Resource Status](documentation/phase-10/screenshots/phase10_resource_status.png)
+*Pod distribution and status across nodes*
+
+![App Details](documentation/phase-10/screenshots/phase10_app_details.png)
+*Application configuration in Argo CD*
+
+![Resource Tree](documentation/phase-10/screenshots/phase10_resource_tree.png)
+*Complete resource tree visualization*
+
+![CI/CD Flow](documentation/phase-10/screenshots/phase10_cicd_flow.png)
+*End-to-end CI/CD pipeline flow diagram*
+
+![Git Status](documentation/phase-10/screenshots/phase10_git_status.png)
+*Git status before final commit*
+
+![Final Push](documentation/phase-10/screenshots/phase10_final_push.png)
+*Phase 10 documentation committed*
+
+![Argo CD Final Status](documentation/phase-10/screenshots/phase10_argocd_final_status.png)
+*Final Argo CD health status - all green*
+
+![Final Deployment](documentation/phase-10/screenshots/phase10_final_deployment.png)
+*Complete production-ready deployment*
 
 ---
 
@@ -599,87 +861,6 @@ aws ecs describe-services \
 - ✅ Documentation and README creation
 - ✅ Security best practices (secrets management)
 - ✅ Monitoring and observability
-
----
-
-## 📸 Screenshots & Documentation
-
-All project phases are fully documented with screenshots organized in the following structure:
-
-```
-documentation/
-├── phase-1/          # Environment Setup & Verification
-│   └── screenshots/
-├── phase-2/          # Docker Multi-Stage Builds
-│   └── screenshots/
-│       ├── phase2_backend_build_success.png
-│       ├── phase2_frontend_build_success.png
-│       ├── phase2_dockerhub_login.png
-│       └── phase2_dockerhub_push_success.png
-├── phase-4/          # Helm Chart Creation
-│   └── screenshots/
-├── phase-5/          # GitHub Actions CI Pipeline
-│   └── screenshots/
-├── phase-6/          # Argo CD GitOps Setup
-│   └── screenshots/
-└── phase-10/         # Complete CI/CD Testing & Production
-    ├── CI-CD-FLOW.md
-    └── screenshots/  (33+ comprehensive milestone screenshots)
-```
-
-### Key Screenshot Categories:
-
-**Phase 1 - Environment Setup:**
-- Core development tools verification
-- Git configuration and connectivity
-- Docker daemon status
-- Python and Node.js validation
-
-**Phase 2 - Dockerization:**
-- Backend multi-stage build process
-- Frontend NGINX build success
-- Docker Hub authentication
-- Image push confirmations
-
-**Phase 4 - Helm Charts:**
-- Helm chart structure
-- Template validation
-- Values configuration
-- Chart deployment
-
-**Phase 5 - CI Pipeline:**
-- GitHub Actions workflow setup
-- Automated build triggers
-- Docker image tagging with SHA
-- DockerHub registry updates
-
-**Phase 6 - GitOps:**
-- Argo CD installation
-- Application sync status
-- Self-healing demonstrations
-- GitOps workflow validation
-
-**Phase 10 - Production Deployment:**
-- Complete CI/CD flow testing
-- Scaling operations (4→6 backend, 4→5 frontend replicas)
-- Self-healing pod recovery
-- Rollback testing with failed deployments
-- Application accessibility verification
-- Resource status monitoring
-- Deployment history tracking
-
-### Viewing Screenshots:
-
-Navigate to the respective phase folder to view detailed visual documentation:
-```bash
-# Example: View Phase 2 screenshots
-cd documentation/phase-2/screenshots/
-ls -la
-
-# Example: View Phase 10 comprehensive documentation
-cd documentation/phase-10/
-cat CI-CD-FLOW.md
-```
 
 ---
 
