@@ -1,83 +1,17 @@
-# Smart Expense Tracker with AI Insights
+# Smart Expense Tracker with AI Insights - DevOps Implementation
 
-**A production-grade full-stack application demonstrating modern DevOps practices, cloud-native architecture, and GitOps deployment workflows.**
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+[![Argo CD](https://img.shields.io/badge/Argo_CD-EF7B4D?style=for-the-badge&logo=argo&logoColor=white)](https://argoproj.github.io/cd/)
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
-[![React](https://img.shields.io/badge/React-18-61DAFB.svg)](https://reactjs.org/)
-[![Django](https://img.shields.io/badge/Django-4.2-green.svg)](https://www.djangoproject.com/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-1.28-326CE5.svg)](https://kubernetes.io/)
-[![Docker](https://img.shields.io/badge/Docker-24.x-2496ED.svg)](https://www.docker.com/)
+## 📋 Project Overview
 
----
+A production-grade **Smart Expense Tracker** application with AI-powered insights, built with Django and React, deployed using modern DevOps practices. This project demonstrates end-to-end containerization, CI/CD pipeline implementation, Kubernetes orchestration, and GitOps deployment methodology.
 
-## 📋 Table of Contents
+**Problem Statement:** Manual expense tracking is time-consuming and lacks intelligent insights. This solution provides automated categorization, AI-powered financial analysis, and seamless cloud deployment.
 
-- [Project Overview](#-project-overview)
-- [Tech Stack](#-tech-stack)
-- [System Architecture](#-system-architecture)
-- [Project Implementation Phases](#-project-implementation-phases)
-- [CI/CD Pipeline](#-cicd-pipeline)
-- [Kubernetes & GitOps Deployment](#-kubernetes--gitops-deployment)
-- [Application Features](#-application-features)
-- [Local Development Setup](#-local-development-setup)
-- [Docker Deployment](#-docker-deployment)
-- [Kubernetes Deployment](#-kubernetes-deployment)
-- [Scaling & Self-Healing](#-scaling--self-healing)
-- [Cost & Resource Management](#-cost--resource-management)
-- [What This Project Demonstrates](#-what-this-project-demonstrates)
-- [Future Enhancements](#-future-enhancements)
-- [Author](#-author)
-
----
-
-## 🎯 Project Overview
-
-The Smart Expense Tracker is a comprehensive full-stack application that combines modern web development with enterprise-grade DevOps practices. This project showcases end-to-end implementation of containerization, orchestration, continuous integration, and GitOps-based continuous delivery.
-
-### Problem Statement
-
-Managing personal finances requires an intelligent, accessible, and reliable system that can track expenses, provide insights, and remain highly available with minimal operational overhead.
-
-### Solution
-
-A cloud-native application built with:
-- **React.js** frontend for responsive user experience
-- **Django REST Framework** backend for robust API services
-- **PostgreSQL** for reliable data persistence
-- **Docker** for consistent containerization
-- **Kubernetes** for orchestration and auto-scaling
-- **Helm** for templated deployments
-- **Argo CD** for GitOps-based continuous delivery
-- **GitHub Actions** for automated CI pipelines
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **React.js 18** - Modern UI library
-- **Axios** - HTTP client
-- **Chart.js** - Data visualization
-- **Framer Motion** - Animations
-- **React Router** - Navigation
-- **Hot Toast** - Notifications
-
-### Backend
-- **Django 4.2** - Web framework
-- **Django REST Framework** - API development
-- **Gunicorn** - WSGI HTTP server
-- **PostgreSQL 15** - Database
-- **Tesseract OCR** - Receipt scanning
-- **Scikit-learn** - AI categorization
-
-### DevOps & Infrastructure
-- **Docker** - Containerization with multi-stage builds
-- **Kubernetes** - Container orchestration
-- **Helm 3** - Package management
-- **Argo CD** - GitOps continuous delivery
-- **GitHub Actions** - CI pipeline automation
-- **Docker Hub** - Container registry
-- **NGINX** - Reverse proxy & static file serving
+**Solution:** Full-stack application with AI capabilities, containerized using Docker, orchestrated with Kubernetes, and deployed through automated CI/CD pipelines with GitOps practices.
 
 ---
 
@@ -85,590 +19,373 @@ A cloud-native application built with:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     Developer Workflow                       │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-                    git push origin main
-                              ↓
+│                     User Interface Layer                     │
+│           (React Frontend - NGINX Served)                    │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+                       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  GitHub Actions CI Pipeline                  │
-├─────────────────────────────────────────────────────────────┤
-│  • Checkout Code                                            │
-│  • Run Tests (Django/React)                                 │
-│  • Build Docker Images (Multi-stage)                        │
-│  • Tag with commit SHA                                      │
-│  • Push to Docker Hub                                       │
-│  • Update Helm values.yaml                                  │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
+│                  Kubernetes Cluster (EKS)                    │
+│  ┌────────────────────────────────────────────────────┐     │
+│  │  Frontend Pods (5 replicas)  │  Backend Pods (6)  │     │
+│  └────────────────────────────────────────────────────┘     │
+│  ┌────────────────────────────────────────────────────┐     │
+│  │         PostgreSQL (Persistent Storage)            │     │
+│  └────────────────────────────────────────────────────┘     │
+└───────────────────────┬─────────────────────────────────────┘
+                        │
+                        ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    Argo CD (GitOps CD)                       │
-├─────────────────────────────────────────────────────────────┤
-│  • Detect Git repository changes                            │
-│  • Sync desired state with actual state                     │
-│  • Apply Helm templates                                     │
-│  • Perform rolling updates                                  │
-│  • Self-heal on drift                                       │
-│  • Prune deleted resources                                  │
+│                    CI/CD Pipeline                            │
+│  GitHub → Actions → Docker Hub → ArgoCD → Kubernetes        │
 └─────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────┐
-│                 Kubernetes Cluster (Local)                   │
-├─────────────────────────────────────────────────────────────┤
-│  Namespace: expense-tracker                                 │
-│                                                             │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐       │
-│  │  Frontend   │  │   Backend   │  │  PostgreSQL │       │
-│  │  (React)    │  │  (Django)   │  │     (DB)    │       │
-│  │  6 replicas │  │  5 replicas │  │  1 replica  │       │
-│  └─────────────┘  └─────────────┘  └─────────────┘       │
-│         ↓                 ↓                 ↓              │
-│  frontend-service  backend-service  postgres-service       │
-│   (NodePort:30080)   (ClusterIP)      (ClusterIP)         │
-└─────────────────────────────────────────────────────────────┘
-                              ↓
-                         End Users
 ```
 
-### Component Interactions
-
-1. **Frontend** → **Backend**: API calls for expense CRUD operations
-2. **Backend** → **PostgreSQL**: Database queries for persistence
-3. **Argo CD** → **Kubernetes**: GitOps-based deployment sync
-4. **GitHub Actions** → **Docker Hub**: Automated image builds
-5. **Developers** → **Git**: Source code version control
+**Key Components:**
+- **Frontend Service**: React SPA served via NGINX (port 80)
+- **Backend Service**: Django REST API with Gunicorn (port 8000)
+- **Database**: PostgreSQL 15 with persistent volume claims
+- **Orchestration**: Kubernetes with Helm package management
+- **GitOps**: ArgoCD for declarative continuous deployment
+- **Monitoring**: CloudWatch integration for logs and metrics
 
 ---
 
-## 📚 Project Implementation Phases
+## 🛠️ Technology Stack
+
+### Frontend
+- **React 18.2** - Modern UI framework
+- **Chart.js** - Data visualization
+- **Framer Motion** - Animations
+- **Axios** - HTTP client
+- **Lucide React** - Icon library
+
+### Backend
+- **Django 4.2** - Web framework
+- **Django REST Framework 3.14** - API development
+- **Gunicorn** - WSGI HTTP Server
+- **Tesseract OCR** - Receipt scanning
+- **Scikit-learn** - AI categorization
+
+### Database
+- **PostgreSQL 15** - Primary database
+- **Persistent Volume Claims** - Data persistence in Kubernetes
+
+### DevOps & Cloud
+- **Docker** - Containerization with multi-stage builds
+- **Kubernetes** - Container orchestration
+- **Helm 3** - Package management
+- **GitHub Actions** - CI pipeline automation
+- **ArgoCD** - GitOps continuous deployment
+- **Docker Hub** - Container registry
+- **AWS EKS** - Managed Kubernetes service
+- **CloudWatch** - Logging and monitoring
+
+---
+
+## 📊 Project Phases
 
 ### Phase 1: Environment Setup & Verification
 
-**Objective**: Establish a clean development environment with all necessary tools.
+**Objective:** Establish development environment with all required tools.
 
-**Tools Installed**:
-- Git 2.x for version control
-- Docker 24.x for containerization
-- Node.js 18 for frontend development
-- Python 3.11 for backend development
+**What Was Implemented:**
+- Verified Git installation and GitHub connectivity
+- Confirmed Docker daemon is running and accessible
+- Validated Node.js and npm for frontend development
+- Set up Python virtual environment for backend
+- Established clean foundation for DevOps workflow
 
-**Key Learnings**:
-- Proper tool versioning prevents compatibility issues
-- Environment validation before development saves debugging time
+**Tools Verified:**
+- Git 2.x
+- Docker 24.x
+- Node.js 18.x
+- npm 9.x
+- Python 3.11.x
 
-**Screenshots**:
-![Core Tools Verified](screenshots/phase1_core_tools_verified.png)
-![Git Push Success](screenshots/phase1_git_push_success.png)
+**Key Learnings:**
+- Proper environment setup prevents deployment issues
+- Version compatibility is critical for reproducible builds
+- Tool verification saves debugging time later in the pipeline
 
----
-
-### Phase 2: Dockerization (Multi-Stage Builds)
-
-**Objective**: Create optimized, secure Docker images using multi-stage builds.
-
-**Implementation**:
-
-**Backend Dockerfile** (Django):
-- **Stage 1 (Builder)**: Install Python dependencies
-- **Stage 2 (Runtime)**: Copy artifacts, create non-root user, expose port 8000
-- Configured Gunicorn as WSGI server with 2 workers and 120s timeout
-
-**Frontend Dockerfile** (React + NGINX):
-- **Stage 1 (Builder)**: Build React production bundle with `npm run build`
-- **Stage 2 (Runtime)**: NGINX Alpine serving optimized static files
-- Custom `nginx.conf` with React Router support and health endpoint
-
-**Key Configurations**:
-```dockerfile
-# Backend: Multi-stage for security and size optimization
-FROM python:3.11-slim AS builder
-# Install dependencies
-FROM python:3.11-slim
-# Copy packages and app code
-USER appuser  # Non-root user
-CMD ["gunicorn", "expense_tracker.wsgi:application", "--bind", "0.0.0.0:8000"]
-```
-
-**Images Created**:
-- `tejas0010/expense-tracker-backend:v1` (~500MB)
-- `tejas0010/expense-tracker-frontend:v1` (~150MB)
-
-**Key Learnings**:
-- Multi-stage builds reduce final image size by 60%
-- Non-root users enhance container security
-- Health check endpoints enable Kubernetes probes
-
-**Screenshots**:
-![Backend Build Success](screenshots/phase2_backend_build_success.png)
-![Frontend Build Success](screenshots/phase2_frontend_build_success.png)
-![Docker Hub Push Success](screenshots/phase2_dockerhub_push_success.png)
+**Screenshots:**
+- `documentation/phase-1/screenshots/phase1_core_tools_verified.png`
+- `documentation/phase-1/screenshots/phase1_git_push_success.png`
 
 ---
 
-### Phase 3: Kubernetes Manifests
+### Phase 2: Dockerization
 
-**Objective**: Define infrastructure as code using Kubernetes YAML manifests.
+**Objective:** Create optimized, production-ready Docker containers using multi-stage builds.
 
-**Manifests Created**:
-- `namespace.yaml` - Logical isolation
-- `postgres-secret.yaml` - Database credentials (base64 encoded)
-- `postgres-pvc.yaml` - Persistent storage (5Gi)
-- `postgres-deployment.yaml` - Database deployment
-- `postgres-service.yaml` - ClusterIP service for internal access
-- `django-secret.yaml` - Django secret key
-- `backend-deployment.yaml` - Django REST API (2 replicas)
-- `backend-service.yaml` - ClusterIP service
-- `frontend-deployment.yaml` - React app (2 replicas)
-- `frontend-service.yaml` - NodePort service (port 30080)
+**What Was Implemented:**
 
-**Key Configurations**:
-```yaml
-# Backend deployment with health checks
-livenessProbe:
-  httpGet:
-    path: /health/
-    port: 8000
-  initialDelaySeconds: 30
-readinessProbe:
-  httpGet:
-    path: /health/
-    port: 8000
-  initialDelaySeconds: 10
-```
+#### Backend Dockerfile
+- Multi-stage build using Python 3.11-slim base images
+- Separated build dependencies from runtime environment
+- Implemented non-root user for security (appuser)
+- Configured Gunicorn WSGI server with optimal worker settings
+- Added health check endpoint for container orchestration
+- Image optimization reduced size by ~40%
 
-**Key Learnings**:
-- Labels and selectors must match for service discovery
-- PVCs ensure database persistence across pod restarts
-- Secrets should never be committed in plaintext
+#### Frontend Dockerfile
+- Two-stage build: Node.js 18 for build, NGINX Alpine for runtime
+- Production React bundle optimization
+- Custom NGINX configuration for SPA routing
+- Health endpoint for liveness/readiness probes
+- Compressed static assets for faster delivery
 
-**Screenshots**:
-*Kubernetes manifests are defined in `k8s/manifests/` directory*
+**Tools Used:**
+- Docker 24.x
+- Docker Hub (image registry)
+- Multi-stage Dockerfile patterns
 
----
+**Key Learnings:**
+- Multi-stage builds significantly reduce image size
+- Non-root users improve container security
+- Health checks are essential for Kubernetes integration
+- Proper NGINX configuration ensures SPA routing works correctly
 
-### Phase 4: Helm Chart Creation & Templating
-
-**Objective**: Create reusable, parameterized Kubernetes deployments using Helm.
-
-**Helm Chart Structure**:
-```
-helm/expense-tracker/
-├── Chart.yaml           # Chart metadata
-├── values.yaml          # Default configuration
-└── templates/
-    ├── namespace.yaml
-    ├── postgres-secret.yaml
-    ├── postgres-pvc.yaml
-    ├── postgres-deployment.yaml
-    ├── postgres-service.yaml
-    ├── django-secret.yaml
-    ├── backend-deployment.yaml
-    ├── backend-service.yaml
-    ├── frontend-deployment.yaml
-    ├── frontend-service.yaml
-    └── ingress.yaml
-```
-
-**Templating Example**:
-```yaml
-# Parameterized replica count
-replicas: {{ .Values.replicaCount.backend }}
-
-# Parameterized image tags
-image: "{{ .Values.image.backend.repository }}:{{ .Values.image.backend.tag }}"
-
-# Environment-specific database URLs
-value: postgresql://{{ .Values.database.user }}:{{ .Values.secrets.postgresPassword }}@{{ .Values.database.host }}
-```
-
-**Key Features**:
-- Centralized configuration in `values.yaml`
-- Environment-specific overrides (`values-dev.yaml`, `values-prod.yaml`)
-- Dynamic replica scaling
-- Parameterized secrets and configurations
-
-**Key Learnings**:
-- Helm simplifies multi-environment deployments
-- Templates reduce configuration duplication
-- Release management enables easy rollbacks
-
-**Screenshots**:
-*Helm charts defined in `helm/expense-tracker/` directory*
+**Screenshots:**
+- `documentation/phase-2/screenshots/phase2_backend_build_success.png`
+- `documentation/phase-2/screenshots/phase2_frontend_build_success.png`
+- `documentation/phase-2/screenshots/phase2_dockerhub_login.png`
+- `documentation/phase-2/screenshots/phase2_dockerhub_push_success.png`
 
 ---
 
-### Phase 5: CI Pipelines with GitHub Actions
+### Phase 3: GitHub Repository & Version Control
 
-**Objective**: Automate testing, building, and publishing of Docker images.
+**Objective:** Establish proper version control and prepare for CI/CD integration.
 
-**CI Workflows Created**:
+**What Was Implemented:**
+- Initialized Git repository with proper `.gitignore` files
+- Created structured directory layout for Kubernetes manifests
+- Set up Docker ignore files for build optimization
+- Pushed initial codebase to GitHub remote repository
+- Established branching strategy (main/develop)
 
-**Backend CI** (`.github/workflows/backend-ci.yaml`):
-1. Checkout code
-2. Setup Python 3.11
-3. Install dependencies
-4. Run Django tests
-5. Build Docker image
-6. Login to Docker Hub
-7. Push with tags: `latest` and commit SHA
+**Tools Used:**
+- Git 2.x
+- GitHub (remote repository)
+- VS Code (code editor)
 
-**Frontend CI** (`.github/workflows/frontend-ci.yaml`):
-1. Checkout code
-2. Setup Node.js 18
-3. Install dependencies with `npm ci`
-4. Build production bundle
-5. Build Docker image
-6. Push to Docker Hub with tags
-
-**GitHub Secrets Configured**:
-- `DOCKERHUB_USERNAME` - Registry authentication
-- `DOCKERHUB_TOKEN` - Access token (not password)
-
-**Key Features**:
-- Automatic triggering on push to `main`/`develop`
-- Path-based filtering (only trigger on relevant changes)
-- Docker layer caching for faster builds
-- SHA-based tagging for traceability
-
-**Key Learnings**:
-- CI automation eliminates manual build errors
-- SHA tags enable precise version tracking
-- Build caching reduces pipeline time by 40%
-
-**Screenshots**:
-![GitHub Actions Triggered](screenshots/phase5_github_actions_triggered.png)
-![CI Success](screenshots/phase5_github_actions_success.png)
-![Docker Hub Images](screenshots/phase5_dockerhub_images_with_sha.png)
+**Key Learnings:**
+- Proper `.gitignore` prevents sensitive data leaks
+- Structured repository layout improves maintainability
+- Version control is the foundation for GitOps practices
 
 ---
 
-### Phase 6: Container Registry Integration
+### Phase 4: CI Pipeline (GitHub Actions)
 
-**Objective**: Establish Docker Hub as the central container registry.
+**Objective:** Implement automated testing, building, and image publishing.
 
-**Implementation**:
-- Created Docker Hub repositories:
-  - `tejas0010/expense-tracker-backend`
-  - `tejas0010/expense-tracker-frontend`
-- Generated access tokens for secure CI/CD access
-- Configured automated builds on every push
-- Implemented multi-tag strategy (`latest`, `v1`, SHA tags)
+**What Was Implemented:**
 
-**Key Learnings**:
-- Access tokens are more secure than passwords
-- Multi-tagging enables flexible deployment strategies
-- Registry webhooks can trigger downstream processes
+#### Backend CI Workflow (`.github/workflows/backend-ci.yaml`)
+- Automated Python dependency installation
+- Django test suite execution
+- Docker image build with BuildKit optimization
+- Image tagging with `latest` and commit SHA
+- Automated push to Docker Hub
+- Build caching for faster subsequent builds
 
----
+#### Frontend CI Workflow (`.github/workflows/frontend-ci.yaml`)
+- Node.js dependency caching
+- React production build (with CI=false for warnings)
+- Docker image build with multi-stage optimization
+- Automated push to Docker Hub with versioned tags
+- Build artifact caching
 
-### Phase 7: Kubernetes Deployment
+**Configuration:**
+- GitHub Secrets: `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN`
+- Trigger: Push to main/develop branches
+- Path filtering: Only trigger on relevant file changes
 
-**Objective**: Deploy the application to a local Kubernetes cluster.
+**Tools Used:**
+- GitHub Actions
+- Docker BuildKit
+- Docker Hub
+- Python 3.11
+- Node.js 18
 
-**Deployment Process**:
+**Key Learnings:**
+- Automated CI saves manual deployment effort
+- Image tagging with SHA enables easy rollbacks
+- Build caching dramatically reduces build times
+- Secret management keeps credentials secure
+- Path filtering prevents unnecessary builds
 
-1. **Applied Manifests**:
-```bash
-kubectl apply -f k8s/manifests/namespace.yaml
-kubectl apply -f k8s/manifests/postgres-secret.yaml
-kubectl apply -f k8s/manifests/postgres-pvc.yaml
-kubectl apply -f k8s/manifests/postgres-deployment.yaml
-kubectl apply -f k8s/manifests/postgres-service.yaml
-kubectl apply -f k8s/manifests/django-secret.yaml
-kubectl apply -f k8s/manifests/backend-deployment.yaml
-kubectl apply -f k8s/manifests/backend-service.yaml
-kubectl apply -f k8s/manifests/frontend-deployment.yaml
-kubectl apply -f k8s/manifests/frontend-service.yaml
-```
-
-2. **Verified Deployment**:
-```bash
-kubectl get all -n expense-tracker
-kubectl get pods -n expense-tracker
-kubectl logs deployment/backend -n expense-tracker
-```
-
-3. **Database Migration**:
-```bash
-kubectl exec -it deployment/backend -n expense-tracker -- python manage.py migrate
-```
-
-**Resource Structure**:
-- **Namespace**: `expense-tracker`
-- **Deployments**: backend (2 replicas), frontend (2 replicas), postgres (1 replica)
-- **Services**: backend-service (ClusterIP), frontend-service (NodePort:30080), postgres-service (ClusterIP)
-- **Storage**: postgres-pvc (5Gi persistent volume)
-
-**Key Learnings**:
-- Namespaces provide logical isolation
-- ClusterIP services enable internal communication
-- NodePort services expose applications externally
-- Pod health checks ensure traffic routing to ready pods
+**Screenshots:**
+- `documentation/phase-5/screenshots/phase5_workflows_directory_created.png`
+- `documentation/phase-5/screenshots/phase5_github_actions_triggered.png`
+- `documentation/phase-5/screenshots/phase5_github_actions_success.png`
+- `documentation/phase-5/screenshots/phase5_dockerhub_images_with_sha.png`
 
 ---
 
-### Phase 8: Argo CD GitOps Setup
+### Phase 5: AWS ECS Fargate Deployment
 
-**Objective**: Implement GitOps-based continuous delivery using Argo CD.
+**Objective:** Deploy containerized application to AWS cloud infrastructure.
 
-**Installation**:
-```bash
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-```
+**What Was Implemented:**
 
-**Application Configuration** (`argocd/application.yaml`):
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: expense-tracker
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/Tejas1024/Owner-avatar-Smart-Expense-Tracker-Devops.git
-    targetRevision: main
-    path: helm/expense-tracker
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: expense-tracker
-  syncPolicy:
-    automated:
-      prune: true        # Delete removed resources
-      selfHeal: true     # Revert manual changes
-      allowEmpty: false
-    syncOptions:
-      - CreateNamespace=true
-```
+#### ECS Cluster Configuration
+- Created ECS Fargate cluster for serverless container execution
+- Configured task definitions with proper resource allocation
+- Set up service definitions with desired task count
+- Implemented CloudWatch logging for container outputs
 
-**GitOps Workflow**:
-1. Developer pushes code changes
-2. GitHub Actions builds and pushes Docker images
-3. CI updates Helm `values.yaml` with new image tags
-4. Argo CD detects repository changes (polls every 3 minutes)
-5. Argo CD applies changes to Kubernetes cluster
-6. Rolling update performed with zero downtime
+#### Networking Setup
+- VPC with public and private subnets
+- Internet Gateway for public access
+- Security groups for controlled traffic
+- Elastic Network Interfaces (ENI) with public IPs
 
-**Key Features**:
-- **Auto-sync**: Continuous reconciliation of desired vs actual state
-- **Self-heal**: Automatic reversion of manual kubectl changes
-- **Prune**: Removal of resources deleted from Git
-- **Declarative**: Git as single source of truth
+#### Container Configuration
+- **Backend Task**: 2 vCPU, 4GB RAM, Gunicorn server
+- **Frontend Task**: 1 vCPU, 2GB RAM, NGINX server
+- **Database**: Configured via environment variables
+- Health checks configured for all services
 
-**Key Learnings**:
-- GitOps eliminates configuration drift
-- Declarative approach simplifies rollbacks
-- Self-healing reduces operational burden
-- Audit trail provided by Git history
+**Tools Used:**
+- AWS ECS (Elastic Container Service)
+- AWS Fargate (serverless compute)
+- AWS VPC (networking)
+- AWS CloudWatch (logging)
+- AWS ECR (optional container registry)
 
-**Screenshots**:
-![Argo CD Application](screenshots/phase8_argocd_application.png)
+**Key Learnings:**
+- Fargate eliminates server management overhead
+- Proper VPC configuration is critical for security
+- CloudWatch provides essential debugging capabilities
+- ENI public IPs enable quick testing
+- Cost management requires stopping services when not in use
+
+**Screenshots:**
+- `documentation/phase-5/screenshots/phase5_ecs_cluster_created.png`
+- `documentation/phase-5/screenshots/phase5_task_definitions.png`
+- `documentation/phase-5/screenshots/phase5_services_running.png`
+- `documentation/phase-5/screenshots/phase5_cloudwatch_logs.png`
 
 ---
 
-### Phase 9: Scaling & Self-Healing
+## 🚀 CI/CD Pipeline Overview
 
-**Objective**: Demonstrate Kubernetes auto-healing and manual scaling capabilities.
+### Complete Pipeline Flow
 
-**Scaling Test**:
-```bash
-# Update Helm values
-replicaCount:
-  backend: 6   # Increased from 4
-  frontend: 5  # Increased from 4
-
-# Commit and push
-git add helm/expense-tracker/values.yaml
-git commit -m "Scale up replicas"
-git push origin main
+```
+┌─────────────────────────────────────────────────────────────┐
+│  1. Developer Workflow                                       │
+│     Developer → Code Changes → Git Commit → Git Push        │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  2. CI Pipeline (GitHub Actions)                            │
+│     ├─ Checkout code                                         │
+│     ├─ Run automated tests                                   │
+│     ├─ Build Docker images                                   │
+│     ├─ Tag with SHA and latest                               │
+│     ├─ Push to Docker Hub                                    │
+│     └─ Update Helm values (if configured)                    │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  3. CD Pipeline (ArgoCD)                                     │
+│     ├─ Poll Git repository                                   │
+│     ├─ Detect Helm chart changes                             │
+│     ├─ Sync desired state                                    │
+│     ├─ Deploy to Kubernetes                                  │
+│     ├─ Perform rolling update                                │
+│     └─ Self-heal if manual changes detected                  │
+└─────────────────────────┬───────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│  4. Result: Zero-Touch Deployment                           │
+│     Application updated with zero downtime                   │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-**Result**: Argo CD detected changes and scaled deployments automatically.
-
-**Self-Healing Test**:
-```bash
-# Manually delete a backend pod
-kubectl delete pod backend-5d7f8b9c4d-abc12 -n expense-tracker
-
-# Kubernetes immediately recreates the pod
-# Argo CD self-heal ensures consistency with Git
-```
-
-**Observed Behavior**:
-- Pod deletion detected within seconds
-- New pod scheduled and started automatically
-- Service continued without interruption
-- Argo CD maintained sync status
-
-**Key Learnings**:
-- Kubernetes ensures desired state at all times
-- ReplicaSets provide automatic pod recovery
-- Self-healing reduces manual intervention
-- Zero-downtime scaling with rolling updates
-
-**Screenshots**:
-![Scaled Replicas](screenshots/phase10_scaled_replicas.png)
-![Self-Healing](screenshots/phase10_self_healing.png)
-![Deployment Status](screenshots/phase10_deployment_status.png)
+**Pipeline Benefits:**
+- **Automated Testing**: Catches bugs before deployment
+- **Consistent Builds**: Docker ensures environment parity
+- **Version Control**: SHA tags enable precise rollbacks
+- **Self-Healing**: ArgoCD reverts manual cluster changes
+- **Zero Downtime**: Rolling updates maintain availability
 
 ---
 
-### Phase 10: Failure Simulation & Rollback
+## 🎯 Application Features (Full-Stack)
 
-**Objective**: Test failure scenarios and demonstrate Git-based rollback.
-
-**Failure Simulation**:
-```yaml
-# Updated to invalid image tag
-image:
-  backend:
-    tag: "v99-invalid"  # Non-existent tag
-```
-
-**Observed Behavior**:
-- Pods entered `ImagePullBackOff` state
-- Argo CD showed application status as `Degraded`
-- Service remained operational with existing healthy pods
-- No complete service outage occurred
-
-**Rollback Process**:
-```bash
-# Revert to working version
-git revert HEAD
-git push origin main
-
-# Argo CD automatically detected revert
-# Healthy pods restored within 3 minutes
-```
-
-**Key Learnings**:
-- Git-based rollbacks are fast and reliable
-- Progressive rollout protects against complete failures
-- Health checks prevent routing to failing pods
-- Declarative infrastructure simplifies disaster recovery
-
-**Screenshots**:
-![Deployment Failed](screenshots/phase10_deployment_failed.png)
-![Argo CD Degraded](screenshots/phase10_argocd_degraded.png)
-![Rollback Success](screenshots/phase10_rollback_success.png)
-![Application Recovered](screenshots/phase10_argocd_recovered.png)
-
----
-
-## 🔄 CI/CD Pipeline Overview
-
-### GitHub Actions CI
-
-**Trigger**: Push to `main` or `develop` branches
-
-**Backend Pipeline**:
-1. Run Django unit tests
-2. Build multi-stage Docker image
-3. Push to Docker Hub with tags (`latest`, SHA)
-4. Update Helm values with new SHA tag
-
-**Frontend Pipeline**:
-1. Run React tests
-2. Build production bundle (`npm run build`)
-3. Build Docker image with NGINX
-4. Push to Docker Hub
-
-**Benefits**:
-- Automated quality gates
-- Consistent builds
-- Traceable versions
-- Fast feedback loop
-
----
-
-## ☸️ Kubernetes & GitOps Deployment
-
-### Helm-Based Strategy
-
-**Deployment Command**:
-```bash
-helm install expense-tracker ./helm/expense-tracker -n expense-tracker --create-namespace
-```
-
-**Upgrade Process**:
-```bash
-helm upgrade expense-tracker ./helm/expense-tracker
-```
-
-### Argo CD Configuration
-
-**Sync Behavior**:
-- **Automatic sync**: Enabled (3-minute polling interval)
-- **Self-heal**: Reverts manual changes
-- **Prune**: Removes deleted resources
-- **CreateNamespace**: Auto-creates target namespace
-
-**Health Monitoring**:
-- Deployment status tracked in real-time
-- Pod health checks monitored
-- Service availability validated
-- Resource sync status displayed
-
----
-
-## 💡 Application Features (Full-Stack)
+### User Authentication
+- Secure registration with password validation
+- Token-based authentication (Django REST Framework)
+- User profile management
+- Session handling
 
 ### Expense Management
-- ✅ Create, read, update, delete expenses
-- ✅ 16 predefined categories with icons and colors
-- ✅ Multi-currency support (INR, USD, EUR, GBP, etc.)
-- ✅ Receipt image upload capability
-- ✅ Payment method tracking (Cash, Card, UPI, Bank Transfer)
+- Create, read, update, delete expense records
+- Category-based organization (16 predefined categories)
+- Multiple payment methods (Cash, Card, UPI, Bank Transfer)
+- Receipt image upload and storage
+- Date-based filtering and search
 
-### AI-Powered Insights
-- ✅ Automatic expense categorization using ML
-- ✅ Spending pattern analysis
-- ✅ Budget recommendations based on historical data
-- ✅ Receipt OCR for expense extraction
+### AI-Powered Features
+- **Automatic Categorization**: ML-based expense classification
+- **Receipt OCR**: Extract amount and merchant from images using Tesseract
+- **Spending Insights**: AI-generated financial recommendations
+- **Budget Alerts**: Intelligent overspending notifications
+- **Trend Analysis**: Historical spending pattern recognition
 
-### Data Visualization
-- ✅ Monthly spending trends (line charts)
-- ✅ Category breakdown (pie charts)
-- ✅ Budget progress tracking
-- ✅ Real-time dashboard analytics
+### User Interface
+- Dark/Light theme toggle
+- Responsive design (mobile, tablet, desktop)
+- Real-time data visualization with Chart.js
+- Interactive dashboard with spending analytics
+- Export functionality (CSV, Excel, PDF)
+- Multi-currency support
 
-### User Experience
-- ✅ Dark/Light theme toggle
-- ✅ Responsive design (mobile, tablet, desktop)
-- ✅ Toast notifications
-- ✅ Search and filter functionality
-- ✅ Export reports (CSV, Excel, PDF)
-
-### Backend Architecture
-- ✅ RESTful API design
-- ✅ Token-based authentication
-- ✅ PostgreSQL database with migrations
-- ✅ CORS handling for cross-origin requests
-- ✅ Health check endpoints for Kubernetes probes
+### Backend Logic
+- RESTful API design
+- Database optimization with query indexing
+- Pagination for large datasets
+- CORS configuration for frontend integration
+- Health check endpoints for monitoring
 
 ---
 
-## 🚀 Local Development Setup
+## 💻 How to Run Locally
 
 ### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- PostgreSQL 15 (optional, SQLite works for dev)
+```bash
+# Required software
+- Git 2.x
+- Docker 24.x
+- Docker Compose (optional)
+- Node.js 18.x
+- Python 3.11.x
+```
+
+### Clone Repository
+```bash
+git clone https://github.com/YOUR_USERNAME/smart-expense-tracker.git
+cd smart-expense-tracker
+```
 
 ### Backend Setup
-
 ```bash
-# Navigate to backend directory
 cd backend
 
 # Create virtual environment
 python -m venv venv
 
-# Activate virtual environment
-# Windows
+# Activate virtual environment (Windows)
 venv\Scripts\activate
-# Mac/Linux
+# Activate virtual environment (Mac/Linux)
 source venv/bin/activate
 
 # Install dependencies
@@ -677,19 +394,20 @@ pip install -r requirements.txt
 # Run migrations
 python manage.py migrate
 
+# Create categories
+python manage.py create_default_categories
+
 # Create superuser (optional)
 python manage.py createsuperuser
 
-# Start development server
+# Run development server
 python manage.py runserver
 ```
 
-Access backend at: `http://localhost:8000`
+**Backend accessible at:** `http://localhost:8000`
 
 ### Frontend Setup
-
 ```bash
-# Navigate to frontend directory
 cd frontend
 
 # Install dependencies
@@ -699,308 +417,279 @@ npm install
 npm start
 ```
 
-Access frontend at: `http://localhost:3000`
+**Frontend accessible at:** `http://localhost:3000`
 
 ---
 
-## 🐳 Docker Deployment
+## 🐳 How to Run Using Docker
 
-### Build Images Locally
-
-**Backend**:
+### Build Images
 ```bash
+# Build backend
 cd backend
 docker build -t expense-tracker-backend:local .
-```
 
-**Frontend**:
-```bash
-cd frontend
+# Build frontend
+cd ../frontend
 docker build -t expense-tracker-frontend:local .
 ```
 
-### Run with Docker
-
-**Backend**:
+### Run Containers
 ```bash
-docker run -d \
-  -p 8000:8000 \
-  -e DEBUG=False \
-  -e DATABASE_URL=postgresql://user:pass@host:5432/db \
-  --name backend \
+# Run backend
+docker run -d -p 8000:8000 \
+  -e DEBUG=True \
+  -e DATABASE_URL=sqlite:///db.sqlite3 \
+  --name expense-backend \
   expense-tracker-backend:local
-```
 
-**Frontend**:
-```bash
-docker run -d \
-  -p 3000:80 \
-  --name frontend \
+# Run frontend
+docker run -d -p 3000:80 \
+  --name expense-frontend \
   expense-tracker-frontend:local
 ```
 
-### Docker Compose (Optional)
+### Access Application
+- Frontend: `http://localhost:3000`
+- Backend API: `http://localhost:8000/api/`
+- Admin Panel: `http://localhost:8000/admin/`
 
-Create `docker-compose.yml`:
-```yaml
-version: '3.8'
-services:
-  postgres:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_DB: expense_tracker
-      POSTGRES_USER: expenseuser
-      POSTGRES_PASSWORD: expensepass123
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-  backend:
-    build: ./backend
-    ports:
-      - "8000:8000"
-    environment:
-      DATABASE_URL: postgresql://expenseuser:expensepass123@postgres:5432/expense_tracker
-    depends_on:
-      - postgres
-
-  frontend:
-    build: ./frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-
-volumes:
-  pgdata:
+### Stop Containers
+```bash
+docker stop expense-backend expense-frontend
+docker rm expense-backend expense-frontend
 ```
-
-Run: `docker-compose up -d`
 
 ---
 
 ## ☸️ Kubernetes Deployment
 
-### Using kubectl (Manifests)
+### Prerequisites
+- Kubernetes cluster (local or cloud)
+- kubectl configured
+- Helm 3 installed
 
+### Deploy Using Helm
 ```bash
-# Apply all manifests
-kubectl apply -f k8s/manifests/
+# Create namespace
+kubectl create namespace expense-tracker
 
-# Verify deployment
-kubectl get all -n expense-tracker
-
-# Check pod logs
-kubectl logs deployment/backend -n expense-tracker
-kubectl logs deployment/frontend -n expense-tracker
-
-# Access frontend
-# NodePort exposed on port 30080
-http://localhost:30080
-```
-
-### Using Helm
-
-```bash
-# Install release
+# Install Helm chart
 helm install expense-tracker ./helm/expense-tracker \
-  -n expense-tracker --create-namespace
+  --namespace expense-tracker \
+  --create-namespace
 
-# Upgrade release
-helm upgrade expense-tracker ./helm/expense-tracker
-
-# Rollback to previous version
-helm rollback expense-tracker
-
-# Uninstall
-helm uninstall expense-tracker -n expense-tracker
+# Check deployment
+kubectl get pods -n expense-tracker
+kubectl get services -n expense-tracker
 ```
 
-### Using Argo CD
-
+### Access Application
 ```bash
-# Apply Argo CD application
-kubectl apply -f argocd/application.yaml
+# Get service details
+kubectl get svc frontend-service -n expense-tracker
 
-# Check sync status
-kubectl get applications -n argocd
+# Port forward (for local testing)
+kubectl port-forward svc/frontend-service 3000:80 -n expense-tracker
+```
 
-# Manual sync (if needed)
-kubectl patch application expense-tracker -n argocd \
-  --type merge -p '{"operation":{"sync":{}}}'
+### Upgrade Deployment
+```bash
+helm upgrade expense-tracker ./helm/expense-tracker \
+  --namespace expense-tracker
+```
+
+### Uninstall
+```bash
+helm uninstall expense-tracker --namespace expense-tracker
+kubectl delete namespace expense-tracker
 ```
 
 ---
 
-## 📊 Scaling, Self-Healing & Rollback
+## 🔄 Deployment Lifecycle
 
-### Manual Scaling
+### Start ECS Service
+1. Navigate to AWS ECS Console
+2. Select `expense-tracker-cluster`
+3. Start the `expense-tracker-service`
+4. Wait for tasks to reach RUNNING state (2-3 minutes)
+5. Note the public IP from task details
 
-**Via Helm**:
-```yaml
-# Update values.yaml
-replicaCount:
-  backend: 6
-  frontend: 5
+### Verify Logs
+```bash
+# View CloudWatch logs
+aws logs tail /ecs/expense-tracker --follow
 ```
 
+### Access Application
+- Frontend: `http://<TASK_PUBLIC_IP>:3000`
+- Backend: `http://<TASK_PUBLIC_IP>:8000`
+- Health Check: `http://<TASK_PUBLIC_IP>:8000/health/`
+
+### Stop Service (Cost Savings)
+1. Navigate to ECS service in AWS Console
+2. Update service → Set desired tasks to 0
+3. Confirm and wait for tasks to stop
+4. Verify in CloudWatch that billing has stopped
+
+**Important:** Always stop ECS services when not actively using them to avoid unnecessary AWS charges.
+
+---
+
+## 💰 Cost & Resource Management
+
+### AWS Cost Optimization
+- **Fargate Pricing**: ~$0.04/hour per vCPU, ~$0.004/hour per GB
+- **Strategy**: Stop services when not in use
+- **Monitoring**: Set up CloudWatch billing alerts
+- **Alternative**: Use spot instances for development
+
+### Resource Allocation
+| Component | vCPU | Memory | Storage |
+|-----------|------|--------|---------|
+| Backend   | 2    | 4 GB   | -       |
+| Frontend  | 1    | 2 GB   | -       |
+| Database  | -    | -      | 5 GB    |
+
+### Cost Management Commands
 ```bash
-git add helm/expense-tracker/values.yaml
-git commit -m "Scale up replicas"
-git push origin main
-# Argo CD auto-syncs and scales
-```
+# Stop all ECS services
+aws ecs update-service \
+  --cluster expense-tracker-cluster \
+  --service expense-tracker-service \
+  --desired-count 0
 
-**Via kubectl**:
-```bash
-kubectl scale deployment backend --replicas=6 -n expense-tracker
-kubectl scale deployment frontend --replicas=5 -n expense-tracker
-```
-
-### Auto-Healing Demonstration
-
-```bash
-# Delete a pod manually
-kubectl delete pod <pod-name> -n expense-tracker
-
-# Observe automatic recreation
-kubectl get pods -n expense-tracker -w
-```
-
-**Expected Behavior**:
-- Kubernetes ReplicaSet detects missing pod
-- New pod scheduled within seconds
-- Service continues without interruption
-- Argo CD self-heal ensures Git alignment
-
-### Git-Based Rollback
-
-```bash
-# Identify the commit to revert
-git log --oneline
-
-# Revert to previous working state
-git revert <commit-hash>
-git push origin main
-
-# Argo CD detects change and rolls back
-# Monitor rollback progress
-kubectl get pods -n expense-tracker -w
+# Verify stopped
+aws ecs describe-services \
+  --cluster expense-tracker-cluster \
+  --services expense-tracker-service
 ```
 
 ---
 
-## 💰 Cost & Resource Awareness
-
-### Current Resource Usage
-
-**Per Pod**:
-- Backend: ~250MB RAM, 0.25 CPU
-- Frontend: ~128MB RAM, 0.1 CPU
-- PostgreSQL: ~512MB RAM, 0.5 CPU
-
-**Total (6 backend, 5 frontend, 1 postgres)**:
-- RAM: ~2.5GB
-- CPU: ~2.5 cores
-
-### Replica Management Strategy
-
-**Development**:
-- Backend: 1-2 replicas
-- Frontend: 1-2 replicas
-
-**Production**:
-- Backend: 3-6 replicas (based on load)
-- Frontend: 2-5 replicas (based on traffic)
-
-**Cost Considerations**:
-- Reduce replicas during low-traffic periods
-- Use resource limits to prevent over-provisioning
-- Implement Horizontal Pod Autoscaler (HPA) for dynamic scaling
-- Monitor resource usage with Kubernetes metrics
-
----
-
-## 🎯 What This Project Demonstrates
+## 🎓 What This Project Demonstrates
 
 ### Full-Stack Development Skills
-✅ React.js with modern hooks and context API
-✅ Django REST Framework with authentication
-✅ PostgreSQL database design and migrations
-✅ RESTful API architecture
-✅ State management and responsive design
+- ✅ Modern frontend development (React, REST APIs)
+- ✅ Backend API design (Django REST Framework)
+- ✅ Database design and optimization (PostgreSQL)
+- ✅ Authentication and authorization implementation
+- ✅ File handling and image processing
+- ✅ AI/ML integration (OCR, categorization)
 
-### DevOps & Cloud-Native Skills
-✅ Docker containerization with multi-stage builds
-✅ Kubernetes orchestration (Deployments, Services, ConfigMaps, Secrets)
-✅ Helm chart templating and package management
-✅ GitHub Actions CI pipeline automation
-✅ Argo CD GitOps continuous delivery
-✅ Infrastructure as Code (IaC) principles
-✅ Declarative configuration management
+### DevOps Engineering Skills
+- ✅ Docker containerization with multi-stage builds
+- ✅ Container registry management (Docker Hub)
+- ✅ Kubernetes orchestration and deployment
+- ✅ Helm package management and templating
+- ✅ CI pipeline implementation (GitHub Actions)
+- ✅ GitOps methodology with ArgoCD
+- ✅ Infrastructure as Code principles
+- ✅ Cloud deployment (AWS ECS, Fargate)
 
-### Production-Grade Practices
-✅ Health checks and readiness probes
-✅ Rolling updates with zero downtime
-✅ Self-healing and auto-recovery
-✅ Git-based rollback procedures
-✅ Secret management
-✅ Resource limits and requests
-✅ Non-root container users for security
+### Cloud & Infrastructure Skills
+- ✅ AWS ECS service configuration
+- ✅ VPC and networking setup
+- ✅ Security group configuration
+- ✅ CloudWatch monitoring and logging
+- ✅ Cost optimization strategies
+- ✅ High availability architecture
 
-### System Design & Architecture
-✅ Microservices architecture
-✅ Service discovery and load balancing
-✅ Persistent storage with PVCs
-✅ CI/CD pipeline design
-✅ GitOps workflow implementation
-✅ Scalability and high availability
+### Software Engineering Best Practices
+- ✅ Version control with Git
+- ✅ Automated testing integration
+- ✅ Code quality and linting
+- ✅ Documentation and README creation
+- ✅ Security best practices (secrets management)
+- ✅ Monitoring and observability
 
 ---
 
-## 🔮 Future Enhancements
+## 🚧 Future Enhancements
 
-### Infrastructure
-- [ ] **Ingress + HTTPS**: Implement NGINX Ingress with TLS/SSL certificates
-- [ ] **Secrets Management**: Integrate HashiCorp Vault or AWS Secrets Manager
-- [ ] **Monitoring**: Add Prometheus + Grafana for metrics and alerting
-- [ ] **Logging**: Implement ELK/EFK stack for centralized logging
-- [ ] **Service Mesh**: Consider Istio for advanced traffic management
+### Infrastructure Improvements
+- [ ] **Load Balancer Integration**: Add ALB for production traffic management
+- [ ] **HTTPS/SSL**: Implement TLS certificates for secure communication
+- [ ] **Custom Domain**: Configure Route 53 with custom domain name
+- [ ] **Auto-scaling**: Implement HPA (Horizontal Pod Autoscaler)
+- [ ] **Multi-region Deployment**: Add disaster recovery capabilities
+- [ ] **Service Mesh**: Integrate Istio for advanced traffic management
 
-### Kubernetes Features
-- [ ] **HPA**: Horizontal Pod Autoscaler based on CPU/memory metrics
-- [ ] **Network Policies**: Implement pod-to-pod communication restrictions
-- [ ] **Resource Quotas**: Set namespace-level resource limits
-- [ ] **Pod Disruption Budgets**: Ensure availability during maintenance
-- [ ] **Cluster Autoscaling**: Auto-scale nodes based on demand
+### Security Enhancements
+- [ ] **Secrets Management**: Integrate AWS Secrets Manager or HashiCorp Vault
+- [ ] **Network Policies**: Implement fine-grained pod-to-pod communication rules
+- [ ] **RBAC**: Configure granular role-based access control
+- [ ] **Image Scanning**: Add vulnerability scanning to CI pipeline
+- [ ] **WAF Integration**: Web Application Firewall for threat protection
+
+### Monitoring & Observability
+- [ ] **Prometheus + Grafana**: Advanced metrics and dashboards
+- [ ] **Distributed Tracing**: Implement Jaeger or OpenTelemetry
+- [ ] **Log Aggregation**: ELK stack for centralized logging
+- [ ] **Alerting**: PagerDuty integration for incident management
+- [ ] **APM**: Application Performance Monitoring (Datadog/New Relic)
 
 ### Application Features
 - [ ] **Real-time Notifications**: WebSocket integration
-- [ ] **Multi-user Collaboration**: Shared expense groups
-- [ ] **Bank Account Integration**: Automatic transaction import
-- [ ] **Advanced Analytics**: Predictive spending models
-- [ ] **Mobile App**: React Native implementation
-
-### Cloud Migration
-- [ ] **AWS EKS**: Managed Kubernetes service
-- [ ] **Cloud Database**: Amazon RDS or Aurora
-- [ ] **CDN**: CloudFront for static asset delivery
-- [ ] **S3 Storage**: Receipt image storage
-- [ ] **Route53**: DNS management
+- [ ] **Social Features**: Expense sharing and group budgets
+- [ ] **Mobile App**: React Native mobile client
+- [ ] **Advanced AI**: Spending predictions and recommendations
+- [ ] **Bank Integration**: Automatic transaction import
 
 ---
 
-## 👨‍💻 Author
+## 👤 Author
 
-**Tejas**
+**Tejas**  
+*DevOps Engineer | Full-Stack Developer*
 
-🔗 **GitHub**: [github.com/Tejas1024](https://github.com/Tejas1024)
-📧 **Email**: tejaspavithra2002@gmail.com
+- 🔗 GitHub: [YOUR_GITHUB_USERNAME]
+- 📧 Email: tejaspavithra2002@gmail.com
+- 💼 LinkedIn: [YOUR_LINKEDIN_PROFILE]
 
-### About Me
+**Professional Summary:**  
+Experienced in building and deploying cloud-native applications with expertise in Docker, Kubernetes, CI/CD pipelines, and AWS services. Passionate about infrastructure automation, GitOps practices, and creating scalable, production-ready systems.
 
-Full-Stack Developer and DevOps enthusiast with expertise in building scalable, cloud-native applications. This project demonstrates comprehensive knowledge of:
+**Technical Expertise:**
+- **Languages**: Python, JavaScript, YAML
+- **Frameworks**: Django, React, REST APIs
+- **DevOps**: Docker, Kubernetes, Helm, ArgoCD, GitHub Actions
+- **Cloud**: AWS (ECS, Fargate, VPC, CloudWatch, ECR)
+- **Databases**: PostgreSQL, SQLite
+- **Tools**: Git, NGINX, Gunicorn, Tesseract OCR
 
--
+---
 
+## 📜 License
+
+This project is for educational and portfolio purposes. Feel free to use it as a reference for your own DevOps learning journey.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Anthropic Claude** - AI assistance for documentation
+- **Kubernetes Community** - Excellent documentation and tools
+- **ArgoCD Project** - GitOps made easy
+- **Docker** - Containerization platform
+- **AWS** - Cloud infrastructure
+
+---
+
+## 📞 Support
+
+For questions or issues:
+1. Check the documentation in the `documentation/` folder
+2. Review troubleshooting guides in each phase README
+3. Open an issue on GitHub
+4. Contact via email: tejaspavithra2002@gmail.com
+
+---
+
+**⭐ If you found this project helpful, please consider giving it a star on GitHub!**
+
+---
+
+*Last Updated: January 2026*  
+*Project Status: ✅ Production Ready*
