@@ -902,9 +902,9 @@ aws ecs describe-services \
 **Tejas**  
 *DevOps Engineer | Full-Stack Developer*
 
-- 🔗 GitHub: tejas1024
+- 🔗 GitHub: [tejas1024](https://github.com/Tejas1024)
 - 📧 Email: tejaspavithra2002@gmail.com
-- 💼 LinkedIn: https://www.linkedin.com/in/tejasgowda-t-r?
+- 💼 LinkedIn: https://www.linkedin.com/in/tejasgowda-t-r
 
 **Professional Summary:**  
 Experienced in building and deploying cloud-native applications with expertise in Docker, Kubernetes, CI/CD pipelines, and AWS services. Passionate about infrastructure automation, GitOps practices, and creating scalable, production-ready systems.
@@ -941,4 +941,5 @@ For questions or issues:
 
 *Last Updated: January 2026*  
 *Project Status: ✅ Production Ready*
+
 
